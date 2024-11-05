@@ -8,19 +8,26 @@
 <body>
     <br>
     <br>
-   <form>
+   
+    <form>
     <tr>
-        <input type="text" placeholder="Namn">
+        <input type="text" id="namn" placeholder="Namn">
        
-        <input type="text" placeholder="Telefon"> 
+        <input type="text" id="telefon" placeholder="Telefon"> 
        
-        
+        <button type="button" onclick="skapaKontakt()"> Skapa </button>
 
     </tr>
+
+    </form>
     <h1>Kontaktlista</h1>
     
     <br>
     <br>
-    <li></li>
+    <ul id="kontaktlista">
+
+    </ul>
+
+    <script src="script.js"> </script>
 </body>
 </html>
