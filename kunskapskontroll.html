@@ -3,31 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakter</title>
+    <title>Kontaktlista</title>
 </head> 
 <body>
-    <br>
-    <br>
-   
-    <form>
-    <tr>
-        <input type="text" id="namn" placeholder="Namn">
-       
-        <input type="text" id="telefon" placeholder="Telefon"> 
-       
-        <button type="button" onclick="skapaKontakt()"> Skapa </button>
-
-    </tr>
-
-    </form>
-    <h1>Kontaktlista</h1>
+    <h1>Kontaktlista Applikation</h1>
     
-    <br>
-    <br>
-    <ul id="kontaktlista">
+    <!-- Form för att skapa kontaktlista -->
+    <form id="kontaktform">
+        <input type="text" id="namn" placeholder="Namn">
+        <input type="text" id="telefon" placeholder="Telefon"> 
+        <button type="button" onclick="skapaKontakt()">Skapa Kontakt</button>
+    </form>
 
-    </ul>
+    <h2>Kontaktlista</h2>
+    <ul id="kontaktlista"></ul>
 
-    <script src="script.js"> </script>
+    <script src="script.js"></script>
 </body>
 </html>
