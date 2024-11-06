@@ -10,7 +10,6 @@ function skapaKontakt() {
 
         // Skapar en ny lista
         const li = document.createElement('li');
-        li.className = 'contact-item';
 
         // Skapar en ny namn-input
         const namnIn = document.createElement('input');
@@ -18,7 +17,7 @@ function skapaKontakt() {
         namnIn.value = namn;
         namnIn.disabled = true; //Ifylld textfält ska vara disabled.
 
-        // Ska ny telefon-input.
+        // Skapar ny telefon-input.
         const telefonIn = document.createElement('input');
         telefonIn.type = 'text';
         telefonIn.value = telefon;
@@ -27,12 +26,18 @@ function skapaKontakt() {
         // Skapar Ändra-knapp
         const ändraKnapp = document.createElement('button');
         ändraKnapp.textContent = 'Ändra';
-        ändraKnapp.onclick = () => växlaRedigering(namnIn, telefonIn, ändraKnapp);
+        
+        ändraKnapp.addEventListener('click',function(){
+                    växlaRedigering(namnIn, telefonIn, ändraKnapp);}
+        )
 
         // Skapar Radera-knapp
         const raderaKnapp = document.createElement('button');
         raderaKnapp.textContent = 'Radera';
-        raderaKnapp.onclick = () => raderaKontakt(li);
+        
+        raderaKnapp.addEventListener('click',function(){
+                raderaKontakt(li);}
+        )        
 
         // Appendar knappar och inputs till listan.
         li.append(namnIn);
@@ -57,13 +62,22 @@ function växlaRedigering(namnIn, telefonIn, ändraKnapp) {
         namnIn.disabled = false; // Tillåter inmatning 
         telefonIn.disabled = false; // Öppnar för inmatning
         ändraKnapp.textContent = 'Spara'; // Ändrar knappens text till "Spara"
-    } else {
-        // Annars avaktiveras inmatningsmöjligheten och ändrar på knappens text tillbaks till "Ändra"
+    }
+    
+    
+     else {  //Först testas det ifall någon av fälten är tomma.  
+                if (!namnIn.value || !telefonIn.value) {
+                alert("Fälten får inte vara tomma"); 
+                }
+        
+        //Annars avaktiveras inmatningsmöjligheten och ändrar på knappens text tillbaks till "Ändra"
+        else{ 
         namnIn.disabled = true; 
         telefonIn.disabled = true; 
         ändraKnapp.textContent = 'Ändra'; 
+        }  
     }
-}
+ }
 
 function raderaKontakt(li) {
     li.remove(); // Raderar kontakten från listan.
