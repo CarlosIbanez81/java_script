@@ -6,6 +6,7 @@ function skapaKontakt() {
     
     // Om både namn och telefon fälten har innehåll så fortsätt 
     if (namn && telefon) {
+        document.getElementById('varning').innerHTML = ""
         const kontaktlista = document.getElementById('kontaktlista');
 
         // Skapar en ny lista
@@ -52,7 +53,9 @@ function skapaKontakt() {
     
     //  Om fälten är tomma så vissa felmeddelandet.
     else {
-        alert("Skriv innehåll i båda fält");
+        // alert("Skriv innehåll i båda fält");
+        document.getElementById('varning').innerHTML = "Skriv innehåll i båda fälten";
+
     }
 }
 
@@ -67,7 +70,9 @@ function växlaRedigering(namnIn, telefonIn, ändraKnapp) {
     
      else {  //Först testas det ifall någon av fälten är tomma.  
                 if (!namnIn.value || !telefonIn.value) {
-                alert("Fälten får inte vara tomma"); 
+                // alert("Fälten får inte vara tomma"); 
+                document.getElementById('varning2').innerHTML = "Fälten får inte vara tomma";
+
                 }
         
         //Annars avaktiveras inmatningsmöjligheten och ändrar på knappens text tillbaks till "Ändra"
@@ -75,6 +80,7 @@ function växlaRedigering(namnIn, telefonIn, ändraKnapp) {
         namnIn.disabled = true; 
         telefonIn.disabled = true; 
         ändraKnapp.textContent = 'Ändra'; 
+        document.getElementById('varning2').innerHTML = ""
         }  
     }
  }
