@@ -94,3 +94,10 @@ function rensaFält() {
     document.getElementById('namn').value = '';
     document.getElementById('telefon').value = '';
 }
+
+
+// Rensar hela listan
+function raderaLista(){
+document.getElementById('kontaktlista').innerHTML='';
+
+}
