@@ -56,6 +56,7 @@ function skapaKontakt() {
 function validera(namn, telefon){
     if (namn === "" || telefon === ""){
         document.getElementById('varning').innerHTML = "Fälten får inte vara tomma";
+        document.getElementById('varning').style.color = "red";
         return true; // Om fälten är tomma  returnera true
     }
     return false; // Om fälten inte är tomma returnera false
@@ -81,17 +82,18 @@ function växlaRedigering(namnIn, telefonIn, ändraKnapp) {
         ändraKnapp.textContent = 'Spara'; // Ändrar knappens text till "Spara"
     } else {
         // Om inputvärderna inte är tomma så spara
-        if (!namnIn.value || !telefonIn.value) {
-            document.getElementById('varning2').innerHTML = "Fälten får inte vara tomma";
-        } else {
-            // Avaktivera fälten efter att de sparats
+        if (validera(namnIn.value,telefonIn.value)) {
+            return;
+        } 
+            // Avaktivera fälten efter att de sparats och ta bort felmeddelande.
+            document.getElementById('varning').innerHTML = "";
             namnIn.disabled = true;
             telefonIn.disabled = true;
             ändraKnapp.textContent = 'Ändra'; // Ändrar knappens text tillbaks till "Ändra"
-            document.getElementById('varning2').innerHTML = ""; // Ta bort felmeddelande
+           
         }
     }
-}
+
 
 // Raderar kontakten från listan.
 function raderaKontakt(li) {
