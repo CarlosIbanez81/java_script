@@ -3,7 +3,8 @@ function skapaKontakt() {
     const namn = document.getElementById('namn').value;
     const telefon = document.getElementById('telefon').value;
     document.getElementById('varning').innerHTML = "";
-    // Om både namn och telefon fälten har innehåll så fortsätt, annars printas felmeddelande. 
+    // Kalla in validering funktionen.
+    // (Om både namn och telefon fälten har innehåll så fortsätt, annars printas felmeddelande.)
     if(validera(namn, telefon)){
         return;
     }
@@ -28,15 +29,13 @@ function skapaKontakt() {
     // Skapar Ändra-knapp
     const ändraKnapp = document.createElement('button');
     ändraKnapp.textContent = 'Ändra';
-    
     ändraKnapp.addEventListener('click', function(){
-        växlaRedigering(namnIn, telefonIn, ändraKnapp);
+    växlaRedigering(namnIn, telefonIn, ändraKnapp);
     });
 
-    // Skapar Radera-knapp
+    // Skapar Radera-knapp och länkar den till funktionen som raderar listan.
     const raderaKnapp = document.createElement('button');
-    raderaKnapp.textContent = 'Radera';
-    
+    raderaKnapp.textContent = 'Radera'
     raderaKnapp.addEventListener('click', function(){
         raderaKontakt(li);
     });
@@ -52,7 +51,7 @@ function skapaKontakt() {
     rensaFält();
 } 
 
-// Testar om någon fält är tom
+// Testar om någon fält är tom, returnerar true eller false.
 function validera(namn, telefon){
     if (namn === "" || telefon === ""){
         document.getElementById('varning').innerHTML = "Fälten får inte vara tomma";
@@ -67,7 +66,12 @@ function raderaLista() {
     document.getElementById('kontaktlista').innerHTML = '';
 }
 
-// Rensar innehåll i fälten
+// Raderar kontakten från en lista.
+function raderaKontakt(li) {
+    li.remove(); 
+}
+
+// Rensar innehåll i fälten.
 function rensaFält() {
     document.getElementById('namn').value = '';
     document.getElementById('telefon').value = '';
@@ -95,7 +99,3 @@ function växlaRedigering(namnIn, telefonIn, ändraKnapp) {
     }
 
 
-// Raderar kontakten från listan.
-function raderaKontakt(li) {
-    li.remove(); 
-}
